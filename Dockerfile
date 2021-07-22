@@ -28,5 +28,7 @@ RUN docker-php-ext-install gettext
 
 RUN docker-php-ext-install exif
 
+RUN echo "session.save_path=/tmp" >> /usr/local/etc/php/php.ini
+
 COPY Dockerfile /var/www/html
 COPY docker-compose.yml /var/www/html
