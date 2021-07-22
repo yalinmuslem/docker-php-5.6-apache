@@ -27,3 +27,6 @@ RUN docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-install gettext
 
 RUN docker-php-ext-install exif
+
+COPY Dockerfile /var/www/html
+COPY docker-compose.yml /var/www/html
