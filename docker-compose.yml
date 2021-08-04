@@ -1,8 +1,25 @@
 version: "3.9"
 services: 
+    db:
+        image: mysql:5.7
+        restart: always
+        ports: 
+            - "3307:3306"
+        volumes: 
+            - ./Database:/var/lib/mysql
+        environment: 
+            MYSQL_ROOT_PASSWORD: "CupidSelepituninu*999"
+            MYSQL_USER: "myroot"
+            MYSQL_PASSWORD: "myroot"
+            MYSQL_DATABASE: "payroll"    
     web:
+        container_name: "web"
         build: .
         ports: 
-            - "81:80"
+            - "8000:80"
         volumes: 
-            - c:\Users\yalinulloh\Desktop\docker:/var/www/html
+            - .:/var/www/html
+        depends_on: 
+            - db
+        environment: 
+            - PMA_HOST=localhost
