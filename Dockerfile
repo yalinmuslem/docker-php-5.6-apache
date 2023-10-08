@@ -42,10 +42,9 @@ RUN apt-get update && apt-get install -y zlib1g-dev \
 
 # COPY Dockerfile /var/www/html
 # COPY docker-compose.yml /var/www/html
-# COPY mongodb-1.3.4.tgz /var/www/html
-COPY imagick /var/www/html
 COPY mongodb.so /usr/local/lib/php/extensions/no-debug-non-zts-20131226
 COPY imagick.so /usr/local/lib/php/extensions/no-debug-non-zts-20131226
+COPY stats.so /usr/local/lib/php/extensions/no-debug-non-zts-20131226
 
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
@@ -55,3 +54,4 @@ RUN echo "memory_limit=512M" >> /usr/local/etc/php/php.ini
 RUN echo "max_execution_time=300" >> /usr/local/etc/php/php.ini
 RUN echo "extension=mongodb.so" >> /usr/local/etc/php/php.ini
 RUN echo "extension=imagick.so" >> /usr/local/etc/php/php.ini
+RUN echo "extension=stats.so" >> /usr/local/etc/php/php.ini
