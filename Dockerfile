@@ -7,9 +7,6 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libmagickwand-dev
 
-# RUN pecl install imagick && docker-php-ext-enable imagick
-# # RUN pecl install imagick-6-common && docker-php-ext-enable imagick
-
 RUN docker-php-ext-install mysqli
 
 RUN docker-php-ext-install calendar
@@ -49,7 +46,7 @@ COPY imagick /var/www/html
 COPY mongodb.so /usr/local/lib/php/extensions/no-debug-non-zts-20131226
 COPY imagick.so /usr/local/lib/php/extensions/no-debug-non-zts-20131226
 
-# # RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
 RUN echo "session.save_path=/tmp" >> /usr/local/etc/php/php.ini
 RUN echo "date.timezone=Asia/Jakarta" >> /usr/local/etc/php/php.ini
