@@ -33,6 +33,7 @@ RUN apt-get update && apt-get install -y zlib1g-dev \
 # phpize && ./configure
 # make all
 # make install
+
 # git clone https://github.com/Imagick/imagick
 # cd imagick
 # phpize && ./configure
