@@ -23,6 +23,6 @@ services:
         # Contoh menonaktifkan xdebug:
         # PHP_DISMOD: xdebug
         volumes:
-            - .:/var/www/html
+            - ../:/var/www/html
         depends_on: 
             - db
