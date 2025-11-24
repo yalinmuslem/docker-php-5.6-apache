@@ -1,28 +1,29 @@
 version: "3.9"
-services: 
-    db:
-        image: "mysql:5.7"
-        command: "--federated"
-        container_name: "mysql"
-        restart: always
-        ports: 
-            - "3307:3306"
-        volumes: 
-            - ./Database:/var/lib/mysql
-        environment: 
-            MYSQL_ROOT_PASSWORD: "CupidSelepituninu*999"
-            MYSQL_USER: "myroot"
-            MYSQL_PASSWORD: "myroot"
-            MYSQL_DATABASE: "payroll"    
-    web:
-        image: webdevops/php-apache:5.6
-        ports:
-            - "8000:80"
-        environment:
-            WEB_DOCUMENT_ROOT: /var/www/html
-        # Contoh menonaktifkan xdebug:
-        # PHP_DISMOD: xdebug
-        volumes:
-            - ../:/var/www/html
-        depends_on: 
-            - db
+services:
+  db:
+    image: "mysql:5.7"
+    command: "--federated"
+    container_name: "mysql"
+    restart: always
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./Database:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "CupidSelepituninu*999"
+      MYSQL_USER: "myroot"
+      MYSQL_PASSWORD: "myroot"
+      MYSQL_DATABASE: "payroll"
+  web:
+    build: .
+    image: webdevops/php-apache:5.6
+    ports:
+      - "8000:80"
+    environment:
+      WEB_DOCUMENT_ROOT: /var/www/html
+    # Contoh menonaktifkan xdebug:
+    # PHP_DISMOD: xdebug
+    volumes:
+      - ../:/var/www/html
+    depends_on:
+      - db
